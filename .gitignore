@@ -3,3 +3,5 @@ node_modules/
 .DS_Store
 dist/
 build/
+
+MONGO_URI=mongodb+srv://admin:XbjNGiBbXhjy2tWh@opd-system-cluster.sgohusz.mongodb.net/?appName=opd-system-cluster
