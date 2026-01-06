@@ -77,5 +77,20 @@ router.get("/status/:tokenId", async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+// ROUTE: GET /api/patients/search/:phone
+// DESC: Find a patient's token by their phone number
+router.get("/search/:phone", async (req, res) => {
+  try {
+    const patient = await Patient.findOne({ phone: req.params.phone })
+      .populate("doctorId", "name clinicName");
+    
+    if (!patient) {
+      return res.status(404).json({ message: "No booking found for this number" });
+    }
 
+    res.json(patient);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 module.exports = router;
